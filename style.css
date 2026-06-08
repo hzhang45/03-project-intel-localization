@@ -100,7 +100,12 @@ section > div {
 /* Content Section - Responsive Grid */
 .content-section {
   padding: 40px 20px;
-  background-color: #ffffff;
+  background-color: #eef2f4;
+}
+
+.subscribe-section {
+  padding: 40px 20px;
+  background-color: #eef2f4;
 }
 
 .content-section .row {
