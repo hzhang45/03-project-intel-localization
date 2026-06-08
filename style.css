@@ -53,7 +53,7 @@ header p {
 }
 
 /* Timeline Cards Section */
-section {
+.timeline-wrapper section {
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -61,25 +61,17 @@ section {
   scroll-snap-type: x mandatory;
 }
 
-section::-webkit-scrollbar {
+.timeline-wrapper section::-webkit-scrollbar {
   height: 10px;
 }
 
-section::-webkit-scrollbar-thumb {
+.timeline-wrapper section::-webkit-scrollbar-thumb {
   background: rgba(0, 113, 197, 0.4);
   border-radius: 10px;
 }
 
-section::-webkit-scrollbar-track {
+.timeline-wrapper section::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.05);
-}
-
-section {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 24px 20px 40px;
-  scroll-snap-type: x mandatory;
 }
 
 /* wrapper to position the timeline note above the section scrollbar */
@@ -105,6 +97,50 @@ section > div {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Content Section - Responsive Grid */
+.content-section {
+  padding: 40px 20px;
+  background-color: #ffffff;
+}
+
+.content-section .col-12,
+.content-section .col-md-6,
+.content-section .col-lg-4 {
+  margin-bottom: 30px;
+  padding: 24px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.content-section .col-12:hover,
+.content-section .col-md-6:hover,
+.content-section .col-lg-4:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.content-section h2 {
+  color: #0071c5;
+  font-size: 22px;
+  margin-top: 0;
+}
+
+.content-section a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #0071c5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 200ms ease;
+}
+
+.content-section a:hover {
+  color: #004f8a;
+  text-decoration: underline;
+}
+
 /* Card image styling */
 .card-image {
   display: block;
@@ -118,7 +154,7 @@ section > div {
 }
 
 /* Card details overlay */
-section > div > p {
+.timeline-wrapper section > div > p {
   position: absolute;
   inset: 0;
   background: rgba(0, 35, 82, 0.92);
@@ -136,44 +172,44 @@ section > div > p {
   z-index: 2;
 }
 
-section > div:hover > p,
-section > div:focus-within > p {
+.timeline-wrapper section > div:hover > p,
+.timeline-wrapper section > div:focus-within > p {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Hover / focus effect for each card: lift, stronger shadow, slight scale */
-section > div:hover,
-section > div:focus-within {
+.timeline-wrapper section > div:hover,
+.timeline-wrapper section > div:focus-within {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
 }
 
-section h2 {
+.timeline-wrapper section h2 {
   margin: 0 0 8px;
   color: #0071c5;
   font-size: 22px;
 }
 
-section h3 {
+.timeline-wrapper section h3 {
   margin: 0 0 16px;
   font-size: 18px;
   color: #10375c;
 }
 
-section p {
+.timeline-wrapper section p {
   margin: 0;
   line-height: 1.6;
   color: #33475b;
 }
 
 @media (max-width: 768px) {
-  section {
+  .timeline-wrapper section {
     flex-direction: column;
     overflow-x: visible;
   }
 
-  section > div {
+  .timeline-wrapper section > div {
     min-width: auto;
     width: 100%;
     max-width: 100%;
