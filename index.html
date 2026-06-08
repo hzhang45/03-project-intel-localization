@@ -200,33 +200,7 @@
     <!-- Add form here -->
   </section>
 
-  <!-- Language/RTL Switcher Script -->
-  <script>
-    /**
-     * Switch between LTR and RTL based on language
-     * Call this function when the user selects a different language
-     * Example: setLanguage('ar') for Arabic, setLanguage('en') for English
-     */
-    const html = document.documentElement;
-    const bootstrapCss = document.getElementById('bootstrap-css');
-    const rtlLanguages = ['ar', 'he', 'ur', 'fa', 'yi'];
-
-    function setLanguage(langCode) {
-      if (!langCode) return;
-
-      langCode = langCode.split('-')[0];
-      html.lang = langCode;
-
-      if (rtlLanguages.includes(langCode)) {
-        html.dir = 'rtl';
-        bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css';
-      } else {
-        html.dir = 'ltr';
-        bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css';
-      }
-    }
-
-    // Keep this as a manual helper only; browser translation should run without runtime language observers.
+  
   </script>
   </script>
 </body>
