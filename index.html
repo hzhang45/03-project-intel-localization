@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -200,8 +200,41 @@
     <!-- Add form here -->
   </section>
 
-  
-  </script>
+  <!-- Script to handle RTL for Arabic translation -->
+  <script>
+    // Function to update page direction and CSS based on language
+    function updatePageDirection() {
+      const htmlElement = document.documentElement;
+      const currentLang = htmlElement.getAttribute('lang') || 'en';
+      const bootstrapLink = document.getElementById('bootstrap-css');
+      
+      // Check if the language is Arabic or starts with 'ar'
+      if (currentLang.startsWith('ar')) {
+        // Switch to RTL
+        htmlElement.setAttribute('dir', 'rtl');
+        // Switch to Bootstrap RTL version
+        if (bootstrapLink) {
+          bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css';
+        }
+      } else {
+        // Switch to LTR
+        htmlElement.setAttribute('dir', 'ltr');
+        // Switch back to Bootstrap LTR version
+        if (bootstrapLink) {
+          bootstrapLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css';
+        }
+      }
+    }
+    
+    // Run on initial page load
+    document.addEventListener('DOMContentLoaded', updatePageDirection);
+    
+    // Watch for changes to the lang attribute (Google Translate changes this)
+    const observer = new MutationObserver(updatePageDirection);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang']
+    });
   </script>
 </body>
 </html>
