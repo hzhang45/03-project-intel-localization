@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" translate="yes">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -227,19 +227,8 @@
       }
     }
 
-    // Auto-detect language changes and update RTL/LTR
-    // This watches for changes to the lang attribute and automatically updates the direction
-    const html = document.documentElement;
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.attributeName === 'lang') {
-          const langCode = html.lang.split('-')[0]; // Get base language code (e.g., 'ar' from 'ar-SA')
-          setLanguage(langCode);
-        }
-      });
-    });
-
-    observer.observe(html, { attributes: true });
+    // This page supports browser translation directly.
+    // The setLanguage function is only for manual language changes in the site UI.
   </script>
 </body>
 </html>
