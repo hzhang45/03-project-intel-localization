@@ -207,28 +207,35 @@
      * Call this function when the user selects a different language
      * Example: setLanguage('ar') for Arabic, setLanguage('en') for English
      */
+    const html = document.documentElement;
+    const bootstrapCss = document.getElementById('bootstrap-css');
+    const rtlLanguages = ['ar', 'he', 'ur', 'fa', 'yi'];
+
     function setLanguage(langCode) {
-      const html = document.documentElement;
-      const bootstrapCss = document.getElementById('bootstrap-css');
-      
-      // RTL languages
-      const rtlLanguages = ['ar', 'he', 'ur', 'fa', 'yi'];
-      
+      if (!langCode) return;
+
+      langCode = langCode.split('-')[0];
+      html.lang = langCode;
+
       if (rtlLanguages.includes(langCode)) {
-        html.lang = langCode;
         html.dir = 'rtl';
-        // Switch to Bootstrap RTL CSS
         bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css';
       } else {
-        html.lang = langCode;
         html.dir = 'ltr';
-        // Switch to Bootstrap LTR CSS
         bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css';
       }
     }
 
-    // This page supports browser translation directly.
-    // The setLanguage function is only for manual language changes in the site UI.
+    // Auto-detect language changes and update direction if the browser translator changes lang
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'lang') {
+          setLanguage(html.lang);
+        }
+      });
+    });
+
+    observer.observe(html, { attributes: true, attributeFilter: ['lang'] });
   </script>
 </body>
 </html>
