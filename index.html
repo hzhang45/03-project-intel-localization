@@ -226,6 +226,20 @@
         bootstrapCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css';
       }
     }
+
+    // Auto-detect language changes and update RTL/LTR
+    // This watches for changes to the lang attribute and automatically updates the direction
+    const html = document.documentElement;
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'lang') {
+          const langCode = html.lang.split('-')[0]; // Get base language code (e.g., 'ar' from 'ar-SA')
+          setLanguage(langCode);
+        }
+      });
+    });
+
+    observer.observe(html, { attributes: true });
   </script>
 </body>
 </html>
