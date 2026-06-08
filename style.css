@@ -103,10 +103,17 @@ section > div {
   background-color: #ffffff;
 }
 
-.content-section .col-12,
-.content-section .col-md-6,
-.content-section .col-lg-4 {
-  margin-bottom: 30px;
+.content-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.content-section .row > div {
+  flex: 1 1 calc(33.333% - 24px);
+  min-width: 260px;
+  margin-bottom: 0;
   padding: 24px;
   background: #f9f9f9;
   border-radius: 12px;
@@ -114,9 +121,7 @@ section > div {
   transition: transform 240ms ease, box-shadow 240ms ease;
 }
 
-.content-section .col-12:hover,
-.content-section .col-md-6:hover,
-.content-section .col-lg-4:hover {
+.content-section .row > div:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
@@ -128,17 +133,34 @@ section > div {
 }
 
 .content-section a {
-  display: inline-block;
-  margin-top: 12px;
-  color: #0071c5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-color: #0071c5;
+  color: #ffffff;
+  font-weight: 700;
   text-decoration: none;
-  font-weight: 600;
-  transition: color 200ms ease;
+  box-shadow: 0 12px 20px rgba(0, 113, 197, 0.18);
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
 
-.content-section a:hover {
-  color: #004f8a;
-  text-decoration: underline;
+.content-section a:hover,
+.content-section a:focus-visible {
+  background-color: #005fa8;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 24px rgba(0, 113, 197, 0.22);
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .content-section .row > div {
+    flex: 1 1 100%;
+  }
 }
 
 /* Card image styling */
