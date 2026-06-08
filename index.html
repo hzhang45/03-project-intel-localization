@@ -226,16 +226,8 @@
       }
     }
 
-    // Auto-detect language changes and update direction if the browser translator changes lang
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.attributeName === 'lang') {
-          setLanguage(html.lang);
-        }
-      });
-    });
-
-    observer.observe(html, { attributes: true, attributeFilter: ['lang'] });
+    // Keep this as a manual helper only; browser translation should run without runtime language observers.
+  </script>
   </script>
 </body>
 </html>
